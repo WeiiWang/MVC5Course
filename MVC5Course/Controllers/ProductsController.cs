@@ -99,6 +99,7 @@ namespace MVC5Course.Controllers
         [HttpPost]
         public ActionResult DeleteProduct(int id , string act)
         {
+           
             if (act != "del")
             {
                 return View();
@@ -108,6 +109,7 @@ namespace MVC5Course.Controllers
             {
                 _db.Product.Remove(product);
                 _db.SaveChanges();
+             
             }
 
             return RedirectToAction("Index2");

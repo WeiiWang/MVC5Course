@@ -14,6 +14,7 @@
         <AssociationConnector Association="FabricsModel.fk_OrderLine_OrderId" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FabricsModel.Product" Width="1.5" PointX="7.5" PointY="1.25" />
         <AssociationConnector Association="FabricsModel.fk_OrderLine_ProductId" />
+        <EntityTypeShape EntityType="FabricsModel.Table_1" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

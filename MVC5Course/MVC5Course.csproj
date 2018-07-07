@@ -161,6 +161,14 @@
     <Compile Include="Models\Client.cs">
       <DependentUpon>Fabric.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Client.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFGeneratePartialClass.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Fabric.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -179,14 +187,32 @@
     <Compile Include="Models\Occupation.cs">
       <DependentUpon>Fabric.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Occupation.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs">
       <DependentUpon>Fabric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderLine.cs">
       <DependentUpon>Fabric.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderLine.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>Fabric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_1.cs">
+      <DependentUpon>Fabric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_1.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModel\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +226,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\EFGeneratePartialClass.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EFGeneratePartialClass.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Fabric.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Fabric.Context.cs</LastGenOutput>

@@ -65,6 +65,13 @@
           <Property Name="Active" Type="bit" />
           <Property Name="Stock" Type="numeric" Precision="18" Scale="3" />
         </EntityType>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="test" />
+          </Key>
+          <Property Name="test" Type="int" Nullable="false" />
+          <Property Name="aaa" Type="nchar" MaxLength="10" />
+        </EntityType>
         <Association Name="FK_Client_Occupation">
           <End Role="Occupation" Type="Self.Occupation" Multiplicity="0..1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
@@ -119,6 +126,7 @@
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderLine" EntityType="Self.OrderLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_1" EntityType="Self.Table_1" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Client_Occupation" Association="Self.FK_Client_Occupation">
             <End Role="Occupation" EntitySet="Occupation" />
             <End Role="Client" EntitySet="Client" />
@@ -255,6 +263,7 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
+          <EntitySet Name="Table_1" EntityType="FabricsModel.Table_1" />
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -279,6 +288,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="test" />
+          </Key>
+          <Property Name="test" Type="Int32" Nullable="false" />
+          <Property Name="aaa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -346,6 +362,14 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_1">
+            <EntityTypeMapping TypeName="FabricsModel.Table_1">
+              <MappingFragment StoreEntitySet="Table_1">
+                <ScalarProperty Name="aaa" ColumnName="aaa" />
+                <ScalarProperty Name="test" ColumnName="test" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
