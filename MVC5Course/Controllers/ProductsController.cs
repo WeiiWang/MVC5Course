@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.MappingViews;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
 using MVC5Course.Models.ViewModel;
-
+using Omu.ValueInjecter;
 namespace MVC5Course.Controllers
 {
     public class ProductsController : Controller
@@ -79,11 +80,38 @@ namespace MVC5Course.Controllers
             }
 
             var one = _db.Product.Find(data.ProductId);
-            one.ProductName = data.ProductName;
-            one.Price = data.Price;
-            one.Stock = data.Stock;
+            one.InjectFrom(data);
             _db.SaveChanges();
             return RedirectToAction("Index2");
+        }
+
+        public ActionResult DeleteProduct(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var data = _db.Product.Find(id);
+            
+
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult DeleteProduct(int id , string act)
+        {
+            if (act != "del")
+            {
+                return View();
+            }
+            var product = _db.Product.Find(id);
+            if (product != null)
+            {
+                _db.Product.Remove(product);
+                _db.SaveChanges();
+            }
+
+            return RedirectToAction("Index2");
+
         }
         // GET: Products/Details/5
         public ActionResult Details(int? id)
