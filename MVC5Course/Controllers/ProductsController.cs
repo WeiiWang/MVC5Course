@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
+using MVC5Course.Models.ViewModel;
 
 namespace MVC5Course.Controllers
 {
@@ -20,7 +21,21 @@ namespace MVC5Course.Controllers
             var data = db.Product.OrderByDescending(p=>p.ProductId).Take(10).ToList();
             return View(data);
         }
-
+        public ActionResult Index2()
+        {
+            var data = db.Product
+                .Where( p=>p.Active==true)
+                .OrderByDescending(p => p.ProductId)
+                .Take(10)
+                .Select(p => new ProductViewModel()
+                {
+                    ProductId = p.ProductId,
+                    ProductName = p.ProductName,
+                    Price = p.Price,
+                    Stock = p.Stock
+                });
+            return View(data);
+        }
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
