@@ -21,6 +21,7 @@ namespace MVC5Course.Controllers
             var data = _db.Product.OrderByDescending(p=>p.ProductId).Take(10).ToList();
             return View(data);
         }
+
         public ActionResult Index2()
         {
             var data = _db.Product
@@ -60,6 +61,28 @@ namespace MVC5Course.Controllers
             _db.Product.Add(product);
             _db.SaveChanges();
             
+            return RedirectToAction("Index2");
+        }
+        public ActionResult EditProduct(int id)
+        {
+            var data = _db.Product.Find(id); // id 通常為主索引
+
+
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult EditProduct(Product data)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(data);
+            }
+
+            var one = _db.Product.Find(data.ProductId);
+            one.ProductName = data.ProductName;
+            one.Price = data.Price;
+            one.Stock = data.Stock;
+            _db.SaveChanges();
             return RedirectToAction("Index2");
         }
         // GET: Products/Details/5

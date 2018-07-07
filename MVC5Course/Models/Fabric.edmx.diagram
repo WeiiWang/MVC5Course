@@ -12,7 +12,7 @@
         <AssociationConnector Association="FabricsModel.FK_Client_Occupation" ManuallyRouted="false" />
         <AssociationConnector Association="FabricsModel.fk_Order_ClientId" ManuallyRouted="false" />
         <AssociationConnector Association="FabricsModel.fk_OrderLine_OrderId" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="FabricsModel.Product" Width="1.5" PointX="5.375" PointY="6.875" />
+        <EntityTypeShape EntityType="FabricsModel.Product" Width="1.5" PointX="7.5" PointY="1.25" />
         <AssociationConnector Association="FabricsModel.fk_OrderLine_ProductId" />
       </Diagram>
     </edmx:Diagrams>
