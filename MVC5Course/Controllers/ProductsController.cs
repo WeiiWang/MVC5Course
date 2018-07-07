@@ -13,17 +13,17 @@ namespace MVC5Course.Controllers
 {
     public class ProductsController : Controller
     {
-        private FabricsEntities db = new FabricsEntities();
+        private readonly FabricsEntities _db = new FabricsEntities();
 
         // GET: Products
         public ActionResult Index()
         {
-            var data = db.Product.OrderByDescending(p=>p.ProductId).Take(10).ToList();
+            var data = _db.Product.OrderByDescending(p=>p.ProductId).Take(10).ToList();
             return View(data);
         }
         public ActionResult Index2()
         {
-            var data = db.Product
+            var data = _db.Product
                 .Where( p=>p.Active==true)
                 .OrderByDescending(p => p.ProductId)
                 .Take(10)
@@ -50,6 +50,16 @@ namespace MVC5Course.Controllers
                 return View();
             }
 
+            var product = new Product()
+            {
+                ProductName = data.ProductName,
+                Active = true,
+                Price = data.Price,
+                Stock = data.Stock
+            };
+            _db.Product.Add(product);
+            _db.SaveChanges();
+            
             return RedirectToAction("Index2");
         }
         // GET: Products/Details/5
@@ -59,7 +69,7 @@ namespace MVC5Course.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            Product product = _db.Product.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -82,8 +92,8 @@ namespace MVC5Course.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Product.Add(product);
-                db.SaveChanges();
+                _db.Product.Add(product);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -97,7 +107,7 @@ namespace MVC5Course.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            Product product = _db.Product.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -114,8 +124,8 @@ namespace MVC5Course.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(product).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(product);
@@ -128,7 +138,7 @@ namespace MVC5Course.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            Product product = _db.Product.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -141,9 +151,9 @@ namespace MVC5Course.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Product.Find(id);
-            db.Product.Remove(product);
-            db.SaveChanges();
+            Product product = _db.Product.Find(id);
+            _db.Product.Remove(product);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -151,7 +161,7 @@ namespace MVC5Course.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
