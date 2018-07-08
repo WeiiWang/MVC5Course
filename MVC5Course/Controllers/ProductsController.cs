@@ -12,9 +12,9 @@ using MVC5Course.Models.ViewModel;
 using Omu.ValueInjecter;
 namespace MVC5Course.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
-        private readonly FabricsEntities _db = new FabricsEntities();
+      
 
         // GET: Products
         public ActionResult Index()
