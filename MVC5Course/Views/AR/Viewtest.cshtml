@@ -1,0 +1,12 @@
+﻿@model String
+
+@*小寫model 是用來宣告的  大寫的是物件*@
+@{
+    ViewBag.Title = "Viewtest";
+   
+}
+
+<h2>Viewtest</h2>
+<a href="@Url.Action("filetest","AR",new {dl=1 })">
+    <img src="@Url.Action("filetest","AR")" />
+</a>

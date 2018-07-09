@@ -22,7 +22,6 @@ namespace MVC5Course.Controllers
             var data = _db.Product.OrderByDescending(p=>p.ProductId).Take(10).ToList();
             return View(data);
         }
-
         public ActionResult Index2()
         {
             var data = _db.Product
