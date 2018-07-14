@@ -25,7 +25,7 @@ namespace MVC5Course.Controllers
             var client = repo.All();
             if (!string.IsNullOrEmpty(keyword))
             {
-                return View(client.Where(p => p.FirstName.Contains(keyword)).ToList());
+                return View(client.Where(p =>p.FirstName.Contains(keyword)).ToList());
             }
             return View(client.Take(10).ToList());
         }

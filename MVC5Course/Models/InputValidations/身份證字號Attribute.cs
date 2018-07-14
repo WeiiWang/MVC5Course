@@ -22,10 +22,10 @@ namespace MVC5Course.Models.InputValidations
 
             var str = (string)value;
 
-            return str == string.Empty || isIdentificationId(str);
+            return str == string.Empty || IsIdentificationId(str);
         }
 
-        private bool isIdentificationId(string arg_Identify)
+        private static bool IsIdentificationId(string arg_Identify)
         {
             var d = false;
             if (arg_Identify.Length == 10)

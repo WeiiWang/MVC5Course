@@ -9,10 +9,7 @@ namespace MVC5Course.Controllers
     public class ARController : Controller
     {
         // GET: AR
-        public ActionResult Index()
-        {
-            return View();
-        }
+    
         public ActionResult Viewtest()
         {
             var model = "罵罵號";
