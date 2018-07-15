@@ -1,0 +1,39 @@
+﻿@model string
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+@*<pre>Viewdata.model=@Model</pre>*@
+
+@{
+
+    var item = new int[]
+    {
+1, 2, 3, 4, 5
+    };
+
+}
+
+@foreach (var i in item)
+{
+    @i
+}
+
+
+@foreach (var i in item)
+{
+   @(i+" ")  
+}
+
+
+<ui>
+@foreach (var i in item)
+    {
+  <li>@i</li>
+    }
+</ui>
+
+
+

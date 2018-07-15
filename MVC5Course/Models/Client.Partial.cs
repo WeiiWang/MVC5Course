@@ -65,4 +65,6 @@ namespace MVC5Course.Models
         [身份證字號]
         public string IdNumber { get; set; }
     }
+
+   
 }

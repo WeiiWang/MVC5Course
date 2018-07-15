@@ -157,7 +157,11 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocalOnlyAttribute.cs" />
+    <Compile Include="Controllers\ModelBindController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RazorController.cs" />
+    <Compile Include="Controllers\sharenameAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,8 +257,14 @@
     <Compile Include="Models\Table_1Repository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\ClientBatchViewModel.cs" />
     <Compile Include="Models\ViewModel\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Static\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -346,8 +356,14 @@
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\AR\Viewtest.cshtml" />
+    <Content Include="Views\ModelBind\Index.cshtml" />
+    <Content Include="Views\ModelBind\ViewBagDemo.cshtml" />
+    <Content Include="Views\Shared\EFerror.cshtml" />
+    <Content Include="Views\Razor\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\MV\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -363,6 +379,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
