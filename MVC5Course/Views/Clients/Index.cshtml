@@ -1,9 +1,19 @@
-﻿@model IEnumerable<MVC5Course.Models.Client>
+﻿@model IEnumerable<Client>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var router = ViewContext.RouteData.Values;
 }
+
+@*
+    取得 modelstate 的 value範例
+        @ViewData.ModelState["id"].Value.AttemptedValue
+*@
+
+
+@*@ViewContext.HttpContext.Items 非mvc的code 要傳給 mvc 就可以用到*@
 
 <h2>Index</h2>
 
@@ -12,7 +22,8 @@
 </p>
 @using (Html.BeginForm("Index", "Clients", FormMethod.Post))
 {
-    @Html.TextBox("keyword",null, new { placeholder = "輸入關鍵字" });
+    @Html.DropDownList("CreditRating",null,"等級選一下")
+    @Html.TextBox("keyword", null, new { placeholder = "輸入關鍵字" });
     <input type="submit" />
 }
 @using (Html.BeginForm("BatchUpdate", "Clients"))
@@ -21,7 +32,7 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
-              
+
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MiddleName)
@@ -43,9 +54,9 @@
         </tr>
         @{
             var data = Model.ToArray();
-            
+
         }
-        @for (int i=0;i< data.Length ;i++)
+        @for (int i = 0; i < data.Length; i++)
         {
             @Html.HiddenFor(modelItem => data[i].ClientId)
             <tr>
@@ -74,6 +85,6 @@
         }
 
     </table>
-    <input type="submit"/>
+    <input type="submit" />
 }
 

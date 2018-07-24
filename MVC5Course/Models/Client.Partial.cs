@@ -36,6 +36,7 @@ namespace MVC5Course.Models
         [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0:d}")]
         [DataType(DataType.Date)]
         public DateTime? DateOfBirth { get; set; }
+        [UIHint("CreditRating")]
         public double? CreditRating { get; set; }
         
         [StringLength(7, ErrorMessage="欄位長度不得大於 7 個字元")]

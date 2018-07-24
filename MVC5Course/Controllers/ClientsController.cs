@@ -12,7 +12,7 @@ using MVC5Course.Models.ViewModel;
 
 namespace MVC5Course.Controllers
 {
-    public class ClientsController : Controller
+    public class ClientsController : BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
         ClientRepository repo;
@@ -22,11 +22,23 @@ namespace MVC5Course.Controllers
         {
             repo = RepositoryHelper.GetClientRepository();
             occuRepo = RepositoryHelper.GetOccupationRepository(repo.UnitOfWork);
+            
         }
         // GET: Clients
       
-        public ActionResult Index(string keyword)
+        public ActionResult Index(string keyword , string CreditRating)
         {
+           
+            var items = (from p in _db.Client
+                    select p.CreditRating)
+                    .Distinct()
+                    .OrderBy(p => p)
+                    .Select(p => new SelectListItem()
+                     {
+                    Text = p.Value.ToString(),
+                    Value = p.Value.ToString()
+                    });
+            ViewBag.CreditRating = new SelectList(items, "Value", "Text");
             var client = repo.All();
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -124,7 +136,18 @@ namespace MVC5Course.Controllers
             ViewBag.OccupationId = new SelectList(occuRepo.All(), "OccupationId", "OccupationName", client.OccupationId);
             return View(client);
         }
+        /// <summary>
+        ///  [ChildActionOnly]  不能被外面的user 使用 只會允許 html.action 使用
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public ActionResult Detail_OrderList(int id)
+        {
+            ViewData.Model= repo.Find(id).Order.ToList();
 
+            return View("OrderList");
+        }
         // GET: Clients/Edit/5
         public ActionResult Edit(int? id)
         {

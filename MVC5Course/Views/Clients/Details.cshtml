@@ -145,8 +145,16 @@
         </dd>
 
     </dl>
+    <h4>Order List Form Partial</h4>
+    <hr />
+
+    @Html.Partial("OrderList", Model.Order.ToList())
+
+
+    <h4>Order List Form Action</h4>
+    <hr />
+
+    @Html.Action("Detail_OrderList", new { id = Model.ClientId })
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
