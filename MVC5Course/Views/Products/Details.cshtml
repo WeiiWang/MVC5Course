@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (IsAjax)
+    {
+        Layout = "";
+
+    }
+
+
 }
 
 <h2>Details</h2>

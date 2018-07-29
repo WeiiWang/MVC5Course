@@ -1,0 +1,10 @@
+[
+  {
+    "outputFileName": "js/testbundler.js",
+    "inputFiles": [
+      "js/counter.js",
+      "js/custom.js",
+      "js/excanvas.js"
+    ]
+  }
+]

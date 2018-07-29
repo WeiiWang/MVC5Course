@@ -1,10 +1,14 @@
-﻿@model IEnumerable<MVC5Course.Models.Product>
+﻿@using X.PagedList.Mvc.Common
+@model IEnumerable<MVC5Course.Models.Product>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (IsAjax)
+    {
+        Layout = "";
+    }
 }
-
 <h2>Index</h2>
 
 <p>
@@ -12,6 +16,7 @@
 </p>
 <table class="table">
     <tr>
+        @Model.ToPagedList().PageNumber
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
@@ -27,22 +32,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-      
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                @Ajax.ActionLink("Details", "Details", new { id = item.ProductId }, new AjaxOptions() { UpdateTargetId = "details" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }),new PagedListRenderOptions()
+{
+    LiElementClasses = new[] {"a","b"}
+
+})
+
+<div id="details"></div>
+@section Scripts {
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+}

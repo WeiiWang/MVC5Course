@@ -143,6 +143,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="X.PagedList, Version=7.5.0.0, Culture=neutral, PublicKeyToken=00b6c4f97602e5e8, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.7.5.0\lib\net461\X.PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="X.PagedList.Mvc, Version=7.5.0.0, Culture=neutral, PublicKeyToken=c6e0b5b21f916f4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.Mvc.7.5.0\lib\net461\X.PagedList.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AI.Agent.Intercept">
@@ -153,6 +159,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\th\Controllers\HomeController.cs" />
+    <Compile Include="Areas\th\thAreaRegistration.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
@@ -432,6 +440,10 @@
     <Content Include="js\jquery.uploadify-3.1.min.js" />
     <Content Include="js\modernizr.js" />
     <Content Include="js\retina.js" />
+    <Content Include="js\testbundler.js" />
+    <Content Include="js\testbundler.min.js">
+      <DependentUpon>testbundler.js</DependentUpon>
+    </Content>
     <Content Include="login.html" />
     <Content Include="messages.html" />
     <Content Include="Models\EFGeneratePartialClass.tt">
@@ -457,6 +469,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="widgets.html" />
     <EntityDeploy Include="Models\Fabric.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -477,6 +491,11 @@
     <Content Include="font\glyphiconshalflings-regular.eot" />
     <Content Include="font\glyphiconshalflings-regular.ttf" />
     <Content Include="font\glyphiconshalflings-regular.woff" />
+    <Content Include="Areas\th\Views\web.config" />
+    <Content Include="Areas\th\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\th\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\th\Views\Home\Index.cshtml" />
+    <None Include="bundleconfig.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="README.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -538,6 +557,7 @@
     <Content Include="Views\Shared\DisplayTemplates\CreditRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\th\Models\" />
     <Folder Include="Views\MV\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
